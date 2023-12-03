@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Message
+
+<head>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+
+    <h2 style="font-family:Calibri">MyMessages</h2>
+@{
+
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">From</th>
+                <th scope="col">Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Message message in ViewBag.Messages)
+            {
+                <tr>
+                    <td>@message.UserId</td>
+                    <td>@message.Msg</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

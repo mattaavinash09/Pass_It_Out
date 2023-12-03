@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Pass_It_Out.ViewModels;
+@model Post
+
+
+<h2 style="font-family:Calibri">Post</h2>
+
+@{
+    @using (Html.BeginForm("EditPost", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(val=>val.Id);
+        <div class="mb-3">
+            @Html.LabelFor(val=>val.Title,new{@class="form-label"})
+            @Html.TextBoxFor(val=>val.Title,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.Title,"",new{@class="text-danger"})
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(val=>val.CategoryId,new{@class="form-label"})
+            <select class="form-select" name="CategoryId" multiple aria-label="multiple select example">
+                @foreach (Category item in ViewBag.CatogriesList)
+                {
+                    <option value="@item.CategoryId" selected>@item.Name</option>
+                }
+            </select>
+            @Html.ValidationMessageFor(val=>val.CategoryId,"",new{@class="text-danger"})
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(val=>val.Description,new{@class="form-label"})
+            @Html.TextAreaFor(val=>val.Description,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.Description,"",new{@class="text-danger"})
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(val=>val.Upload_Images,new{@class="form-label"})
+            <input type="file" class="form-control" id="Upload_Images" name="Upload_Images" />
+            @Html.ValidationMessageFor(val=>val.Upload_Images,"",new{@class="text-danger"})
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(val=>val.Location,new{@class="form-label"})
+            @Html.TextAreaFor(val=>val.Location,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.Location,"Location should be minium 10 charecters and less than 30 charecters",new{@class="text-secondary"})
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(val=>val.PostTo,new{@class="form-label"})
+            <select class="form-select" name="PostTo" multiple aria-label="multiple select example">
+                <option value="1" selected>Friends</option>
+                <option value="2">All</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(val=>val.CreatedBy,new{@class="form-label"})
+            @Html.TextBoxFor(val=>val.CreatedBy,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.Title,"",new{@class="text-danger"})
+        </div>
+
+        
+
+
+        <input type="submit" value="Update" class="btn btn-primary"></input>
+    }
+
+}
+

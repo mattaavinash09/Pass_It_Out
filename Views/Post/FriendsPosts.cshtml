@@ -1,0 +1,87 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model List<Pass_It_Out.Models.Post>
+
+<style>
+    .h1 {
+        text-align: center;
+    }
+
+
+
+    .container {
+        margin:10px;
+        justify-content: center;
+    }
+
+
+
+    .card {
+        width: 310px;
+        height: 440px;
+        margin: 10px;
+        justify-content: center;
+        box-shadow: 0 0 10px lightslategray;
+    }
+
+    .card-image {
+        height: 220px;
+        width: 100%;
+        margin-bottom: 5px;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .card-body {
+        height: 170px;
+        text-align: left;
+        text-align: left;
+        margin-bottom: 2px;
+    }
+
+    .card .card {
+        margin-bottom: 10px;
+    }
+
+    .text {
+        text-align: left;
+    }
+
+    .button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+</style>
+
+
+<section class="container">
+    <div class="row">
+        @foreach (Post post in ViewBag.AllPosts)
+        {
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <img class="card-image" src="data:image/png;base64,@Convert.ToBase64String(post.Upload_Images)" alt="Card image" style="object-fit">
+                    <div class="card-body">
+                        <h4 class="card-title">@post.Title</h4>
+                        <p class="text">
+                            <strong>Category Type:</strong> @post.CategoryId <br />
+                            <strong>Description:</strong> @post.Description <br />
+                            <strong>Posted By:</strong> @post.CreatedBy <br />
+                            <strong>Created Date:</strong> @post.CreatedDate <br />
+                        </p>
+                    </div>
+                    @Html.ActionLink("Send Message", "Index", "Message", new { PostOwnerId = post.UserId }, new { @class = "btn btn-primary btn-block button" })
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+
+
+

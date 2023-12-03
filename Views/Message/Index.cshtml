@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Pass_It_Out.ViewModels
+
+@model MessagesVM
+
+
+
+<h2 style="font-family:Calibri">Messages</h2>
+
+@{
+    @using (Html.BeginForm("Save", "Message", FormMethod.Post))
+    {
+        
+        <div class="mb-3">
+            @Html.LabelFor(val=>val.To,new{@class="form-label"})
+            <input type="text" value="@ViewBag.PostOwnerId" name="To" class="form-control">
+            @Html.ValidationMessageFor(val=>val.To,"",new{@class="text-danger"})
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(val=>val.Msg,new{@class="form-label"})
+            @Html.TextAreaFor(val=>val.Msg,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.Msg,"",new{@class="text-danger"})
+        </div>
+
+        <input type="submit" value="Submit" class="btn btn-primary"></input>
+    }
+}

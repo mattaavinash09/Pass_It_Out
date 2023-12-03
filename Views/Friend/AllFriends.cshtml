@@ -1,0 +1,93 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<h2 style="font-family:Calibri">My Friends</h2>
+
+
+
+<a href="@Url.Action("Index", "Friend")" class="btn btn-primary">
+    <i class="icon-pencil icon-white "></i>
+    <span>
+        <strong>Add Friend</strong>
+    </span>
+</a>
+
+
+@* 
+<a href="@Url.Action("SentRequests", "Friend")" class="btn btn-primary">
+    <i class="icon-pencil icon-white "></i>
+    <span>
+        <strong>View Sent Requests</strong>
+    </span>
+</a> *@
+
+
+
+<a href="@Url.Action("FriendsRequests", "Friend")" class="btn btn-primary">
+    <i class="icon-pencil icon-white "></i>
+    <span>
+        <strong>View Friend Requests</strong>
+    </span>
+</a>
+
+<div>
+    @{
+        @if (ViewBag.AllFriends == null)
+        {
+            <p>No Friends</p>
+        }
+        else
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">FriendId</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Update Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (Friend friend in ViewBag.AllFriends)
+                    {
+                        <tr>
+                                @if (friend.UserId == ViewBag.UserId)
+                                {
+                                    <td>@friend.FriendId</td>
+
+                                }
+                                else
+                                {
+                                    <td>@friend.UserId</td>
+                                }
+                        
+                            <td>@friend.Status</td>
+                            <td>
+
+                                @if (@friend.Status.ToLower() == "active")
+                                {
+                                    @Html.ActionLink("Block", "BlockFriend", "Friend", new { @Id= friend.UserId })
+                                }
+
+                                else if (@friend.Status.ToLower() == "pending")
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Active", "AcceptFriend", "Friend" ,new{@Id=friend.UserId})
+                                }
+                              
+                            </td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        }
+    }
+
+</div>
+

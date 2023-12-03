@@ -1,0 +1,119 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Pass_It_Out.View_Models
+
+@model UserVM
+
+<head>
+    <style>
+        <style >
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .registration-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+        }
+
+        .registration-form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+        }
+
+            .registration-form h2 {
+                text-align: center;
+                margin-bottom: 30px;
+                color: #007bff;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                font-weight: bold;
+            }
+
+        .form-control {
+            height: 40px;
+        }
+
+        .btn-register {
+            background-color: #28a745;
+            color: #fff;
+            height: 40px;
+            width: 100%;
+        }
+
+            .btn-register:hover {
+                background-color: #218838;
+            }
+    </style>
+</head>
+
+
+<div class="registration-container">
+
+    <div class="registration-form">
+@{
+             <h2 style="font-family:Calibri;text-align:center;color:black">User Registration</h2>
+
+    @using (Html.BeginForm("UserRegistration", "User", FormMethod.Post, new { @class = "form-label" }))
+    {
+         <div class="mb-3 form-group">
+            @Html.LabelFor(val=>val.UserId,new{@class="form-label"})
+            @Html.TextBoxFor(val=>val.UserId,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.UserId,"",new{@class="text-danger"})
+        </div>
+
+        <div class="mb-3 form-group">
+            @Html.LabelFor(val=>val.FirstName,new{@class="form-label"})
+            @Html.TextBoxFor(val=>val.FirstName,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.FirstName,"",new{@class="text-danger"})
+        </div>
+
+        <div class="mb-3 form-group">
+            @Html.LabelFor(val=>val.LastName,new{@class="form-label"})
+            @Html.TextBoxFor(val=>val.LastName,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.FirstName,"",new{@class="text-danger"})
+        </div>
+
+        // <div class="mb-3 form-group">
+        //     @Html.LabelFor(val=>val.Email,new{@class="form-label"})
+        //     @Html.TextBoxFor(val=>val.Email,new{@class="form-control"})
+        //     @Html.ValidationMessageFor(val=>val.Email,"",new{@class="text-danger"})
+        // </div>
+
+         <div class="mb-3 form-group">
+            @Html.LabelFor(val=>val.Location,new{@class="form-label"})
+            @Html.TextBoxFor(val=>val.Location,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.Location,"",new{@class="text-danger"})
+        </div>
+
+         <div class="mb-3 form-group">
+            @Html.LabelFor(val=>val.Password,new{@class="form-label"})
+            @Html.PasswordFor(val=>val.Password,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.Password,"",new{@class="text-danger"})
+
+        </div>
+
+        <div class="mb-3 form-group">
+            @Html.LabelFor(val=>val.ConfirmPassword,new{@class="form-label"})
+            @Html.PasswordFor(val=>val.ConfirmPassword,new{@class="form-control"})
+            @Html.ValidationMessageFor(val=>val.ConfirmPassword,"",new{@class="text-danger"})
+        </div>
+
+      <input type="submit" value="Register" class="btn btn-success btn-register"></input>
+    }
+}
+    @Html.ActionLink("Back to Login","UserLogin","User")
+    </div>
+</div>
