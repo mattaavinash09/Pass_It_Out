@@ -6,5 +6,6 @@ namespace Pass_It_Out.Services.MessageServices
     {
         public bool Save(Message message);
         public List<Message> GetAllMessages(string CurrentUserId);
+        public void UpdateMessageIsRead(string CurrentUserId);
     }
 }

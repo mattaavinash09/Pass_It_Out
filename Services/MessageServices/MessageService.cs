@@ -13,7 +13,7 @@ namespace Pass_It_Out.Services.MessageServices
         }
         public List<Message> GetAllMessages(string CurrentUserId)
         {
-            List<Message> messages= ctx.Messages.Where(val => val.To == CurrentUserId).ToList();
+            List<Message> messages= ctx.Messages.Where(val => val.To == CurrentUserId).OrderByDescending(obj=> obj.Id).ToList();
             return messages;
         }
 
@@ -23,5 +23,16 @@ namespace Pass_It_Out.Services.MessageServices
             int rowsupdated = ctx.SaveChanges();
             return rowsupdated > 0;
         }
+        public void UpdateMessageIsRead(string CurrentUserId)
+        {
+            List<Message> messages = ctx.Messages.Where(val => val.To == CurrentUserId && val.isMessageRead == null).ToList();
+            foreach (var msg in messages)
+            {
+                msg.isMessageRead = true;
+            }
+            ctx.SaveChanges();
+        }
+
+        
     }
 }

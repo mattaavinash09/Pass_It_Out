@@ -6,7 +6,7 @@
         public string UserId { set; get; }
         public string To { get; set; }
         public string Msg { get; set; }
-        
+        public bool? isMessageRead { get; set; }
         //Navigation property
         public User User { get; set; }
     }

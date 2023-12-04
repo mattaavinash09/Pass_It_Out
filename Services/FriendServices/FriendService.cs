@@ -38,7 +38,7 @@ namespace Pass_It_Out.Services.FriendServices
         public List<Friend> GetAllFriends(string UserId)
         {
             List<Friend> friends = ctx.Friends.Where(val => val.UserId == UserId  
-             ||( val.FriendId == UserId && val.Status == Constants.FriendStatus.Active)).ToList(); 
+             ||( val.FriendId == UserId && (val.Status == Constants.FriendStatus.Active || val.Status == Constants.FriendStatus.Block))).ToList(); 
             return friends;
         }
 

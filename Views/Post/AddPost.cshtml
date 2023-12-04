@@ -83,8 +83,8 @@
             <div class="mb-3 form-group">
             @Html.LabelFor(val=>val.PostTo,new{@class="form-label"})
                 <select class="form-select form-select-sm" name="PostTo" aria-label=".form-select-sm example">
-                <option value="1" selected>Friends</option>
-                <option value="2">All</option>
+                    <option value="2" selected>All</option>
+                    <option value="1" >Friends</option>
             </select>
         </div>
 
@@ -103,12 +103,3 @@
 
 
 
-@*    <div class="mb-3 form-group">
-
-            @Html.LabelFor(val=>val.Status)
-
-            <label>
-                <input type="checkbox" id="Status" name="Status" value="true">Active
-            </label>
-
-        </div> *@

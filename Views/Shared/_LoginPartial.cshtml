@@ -2,11 +2,18 @@
 
 @{
     var UserId = Context.Session.GetString("UserId");
+    var messageCount = Context.Session.GetString("MessageCount");
 }
 
 <ul class="navbar-nav">
 @if (!(string.IsNullOrEmpty(UserId)))
 {
+        <li class="nav-item">
+           
+            <a class="nav-link text-dark" asp-area="" asp-controller="Message" asp-action="MyMessages">
+                <img src="~/images/email.png" style="width:20px" alt="MY MESSAGES" />&nbsp;<span style="padding-top:2px">@messageCount</span>
+            </a> &nbsp;&nbsp;
+    </li>
          <li class="nav-item">
             <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" class="form-label" style="font-display:block;">Hello @UserId</a>
         </li>

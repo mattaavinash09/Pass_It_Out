@@ -51,17 +51,17 @@ namespace Pass_It_Out.Controllers
             friendid.Status = "Active";
             friendid.ConfirmDate= DateTime.Now;
             bool success = service.Update(Id, friendid);
-            return RedirectToAction("FriendsRequests");
+            return RedirectToAction("AllFriends");
         }
 
         public IActionResult BlockFriend(string Id)
         {
             string UserId = HttpContext.Session.GetString("UserId");
             Friend friend = service.GetFriendById(UserId,Id);
-            friend.Status = "Blocked";
+            friend.Status = Common.Constants.FriendStatus.Block;
             friend.ConfirmDate = DateTime.Now;
             bool success = service.Update(Id, friend);
-            return RedirectToAction("FriendsRequests");
+            return RedirectToAction("AllFriends");
         }
         public IActionResult SentRequests()
         {

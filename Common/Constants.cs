@@ -5,7 +5,7 @@
         public static class FriendStatus
         {
             public const string Active = "Active";
-            public const string Block = "Block";
+            public const string Block = "Blocked";
             public const string Pending = "Pending";
 
         }

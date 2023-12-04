@@ -6,7 +6,7 @@ using Pass_It_Out.Services.PostServices;
 
 namespace Pass_It_Out.Controllers
 {
- //   [UserAuthentication]
+    [UserAuthentication]
     public class DashBoardController : Controller
     {
         private IPost service;

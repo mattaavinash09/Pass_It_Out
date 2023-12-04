@@ -25,7 +25,9 @@ namespace Pass_It_Out.Controllers
         {
             string CurrentUserId = HttpContext.Session.GetString("UserId");
             List<Message> messages = service.GetAllMessages(CurrentUserId);
+            service.UpdateMessageIsRead(CurrentUserId);
             ViewBag.Messages = messages;
+            HttpContext.Session.Remove("MessageCount");
             return View();
         }
 
